@@ -1,7 +1,7 @@
 mv the files / dirs to .dotfiles/
 I used arandr a giu for xrandr to position the screens properly, 
 I saved that config as a file to ./screenlayout/screenlayout
-then put that at the top of .xprofile
+then put that at the top of .xprofile and added the --rate 143.97
 
 ln -sf ~/.dotfiles/.config/i3 ~/.config
 ln -sf ~/.dotfiles/.fonts ~/.fonts
