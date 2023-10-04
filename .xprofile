@@ -1,1 +1,5 @@
-xrandr --output DisplayPort-1 --rotate right
+xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 143.97 --pos 1920x560 --rotate normal --output DisplayPort-1 --mode 2560x1440 --rate 143.97 --pos 4480x0 --rotate right --output DisplayPort-2 --off --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
+xrandr --output DisplayPort-1 --rate 143.97 --rotate right
+xrdb /home/chris/.Xresources
+exec i3
+

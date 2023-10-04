@@ -210,3 +210,5 @@ bar {
 # 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 # 	}
 # }
+
+exec --no-startup-id i3-msg $ws2; exec firefox 
