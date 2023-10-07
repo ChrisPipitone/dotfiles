@@ -7,3 +7,9 @@ ln -sf ~/.dotfiles/.config/i3 ~/.config
 ln -sf ~/.dotfiles/.fonts ~/.fonts
 ln -sf ~/.dotfiles/.bashrc ~/.bashrc
 ln -sf ~/.dotfiles/.xprofile ~/.xprofile
+
+TO DO add other shortcuts made... im lazy
+
+added picom. used xprop to find the WM_CLASS and set that value into the opacity rule
+
+

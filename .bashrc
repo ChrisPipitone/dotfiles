@@ -94,14 +94,14 @@ alias l='ls -CF'
 
 #code / work aliases
 alias pgc='cd /media/chris/Code/PixidaCode/PGC'
-alias pgcbus='cd /media/chris/Code/PixidaCode/PGC/bus-dash'
+alias pgcbus='cd /media/chris/Code/PixidaCode/PGC/bus-dash/code/"project source code"/busproject/'
 alias pgcsnow='cd /media/chris/Code/PixidaCode/PGC/snow-dash'
 alias pgcnh='cd /media/chris/Code/PixidaCode/PGC/national-harbor'
 alias ovgip='cd /media/chris/Code/PixidaCode/OVGIP && code .'
 alias wnotes='cd /media/chris/Code/PixidaCode/wnotes && nvim'
 #personal docs / notes
 alias notes='cd ~/Documents/notes && nvim'
-
+alias config='cd ~/.dotfiles/.config'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
