@@ -53,12 +53,12 @@ setopt hist_find_no_dups
 bindkey -v
 bindkey "^?" backward-delete-char
 
-alias config='nvim ~/.config'
 alias vi='nvim'
 alias vim='nvim'
 alias ls='ls --color'
 alias la='ls -la'
 alias ll='ls -l'
+alias config='cd ~/.config && nvim'
 alias snowd='cd ~/snow-dash/code/ && nvim'
 alias busd='cd ~/bus-dash/code/project-code/busproject/ && nvim'
 alias nath='cd ~/nat-harbor/code/ && nvim'
