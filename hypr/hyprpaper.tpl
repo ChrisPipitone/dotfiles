@@ -1,4 +1,4 @@
-# Preload Wallpapers
+  Preload Wallpapers
 preload = WALLPAPER
 
 # Set Wallpapers
