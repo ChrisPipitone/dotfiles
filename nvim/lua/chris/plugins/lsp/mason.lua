@@ -35,7 +35,6 @@ return {
 				"lua_ls",
 				"graphql",
 				"emmet_ls",
-				"prismals",
 				"pyright",
 				"clangd",
 				"cmake",
