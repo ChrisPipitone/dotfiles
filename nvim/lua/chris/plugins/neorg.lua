@@ -10,7 +10,19 @@ return {
 		-- put any other flags you wanted to pass to lazy here!
 		config = function()
 			require("neorg").setup({
-				-- put any of your previous config here
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								journal = "~/notes/journal/",
+								ovgip = "~/notes/work/ovgip/",
+								pgc = "~/notes/work/pgc/",
+							},
+						},
+					},
+				},
 			})
 		end,
 	},
