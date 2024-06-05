@@ -16,13 +16,14 @@
   "modules-left": [
     "custom/padd",
     "custom/l_end",
+    "idle_inhibitor",
+    "clock",
+    "custom/r_end",
+    "custom/l_end",
     "cpu",
     "memory",
     "custom/gpuinfo",
-    "custom/r_end",
-    "custom/l_end",
-    "idle_inhibitor",
-    "clock",
+
     "custom/r_end",
     "custom/padd"
   ],

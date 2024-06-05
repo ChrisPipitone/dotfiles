@@ -49,8 +49,8 @@ tooltip {
 }
 
 #workspaces button.active {
-  background: @background;
-  color: @color2;
+  background: @cursor;
+  color: @color4;
   margin-left: 2px;
   padding-left: 11px;
   padding-right: 11px;
@@ -151,14 +151,14 @@ tooltip {
 #custom-sr_end,
 #custom-rl_end,
 #custom-rr_end {
-  color: @background;
-  background: @foreground;
-  opacity: 0.8;
+  color: @color12;
+  background: @background;
+  opacity: 1;
   margin: 12px 0px 0px 0px;
   padding-left: 5px;
   padding-right: 11px;
-  border-top: @background solid 1.7px;
-  border-bottom: @backgroun solid 1.7px;
+  border-top: @foreground solid 1.7px;
+  border-bottom: @foreground solid 1.7px;
 }
 
 #workspaces,
@@ -167,14 +167,14 @@ tooltip {
 }
 
 #custom-r_end {
-  border-right: @outline solid 1.7px;
+  border-right: @foreground solid 1.7px;
   border-radius: 0px 19px 19px 0px;
   margin-right: 8px;
   padding-right: 0px;
 }
 
 #custom-l_end {
-  border-left: @outline solid 1.7px;
+  border-left: @foreground solid 1.7px;
   border-radius: 19px 0px 0px 19px;
   margin-left: 8px;
   padding-left: 0px;
