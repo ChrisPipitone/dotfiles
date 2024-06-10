@@ -22,8 +22,6 @@
     "custom/l_end",
     "cpu",
     "memory",
-    "custom/gpuinfo",
-
     "custom/r_end",
     "custom/padd"
   ],
