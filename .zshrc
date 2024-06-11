@@ -57,7 +57,7 @@ bindkey "^?" backward-delete-char
 
 alias vi='nvim'
 alias vim='nvim'
-alias ls='ls --color'
+alias ls='colorls'
 alias la='ls -la'
 alias ll='ls -l'
 alias config='cd ~/.config && nvim'
