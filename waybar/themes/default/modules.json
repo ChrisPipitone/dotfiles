@@ -53,12 +53,12 @@
   },
   //Microsoft Teams
   "custom/teams": {
-    "format": "󰊻 ",
+    //    "format": "󰊻 ",
     "on-click": "chromium --app=https://teams.microsoft.com/go"
   },
   //Outlook
   "custom/outlook": {
-    "format": "󰇮 ",
+    //   "format": "󰇮 ",
     "on-click": "chromium --app=https://outlook.office.com/mail/"
   },
   //Spotify
