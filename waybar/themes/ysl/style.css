@@ -3,8 +3,8 @@
   border-radius: 0px;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
-  font-size: 15px;
-  min-height: 18px;
+  font-size: 13px;
+  min-height: 13px;
 }
 
 /* @import "s/theme.css"; */
@@ -154,7 +154,6 @@ tooltip {
   color: @color12;
   background: @background;
   opacity: 1;
-  margin: 12px 0px 0px 0px;
   padding-left: 5px;
   padding-right: 11px;
   border-top: @foreground solid 1.7px;
