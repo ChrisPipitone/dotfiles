@@ -17,7 +17,8 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
 	{ import = "chris.plugins" },
 	{ import = "chris.plugins.lsp" },
-	install = { colorscheme = { "onedark" } },
+	-- install = { colorscheme = { "onedark" } },
+	-- 	install = { colorscheme = { "NeoSolarized" } },
 	checker = {
 		enabled = true,
 		notify = false,
@@ -26,3 +27,7 @@ require("lazy").setup({
 		notify = false,
 	},
 })
+
+-- somewhere in your config:
+vim.cmd("colorscheme onedark_dark")
+-- vim.cmd("colorscheme NeoSolarized")

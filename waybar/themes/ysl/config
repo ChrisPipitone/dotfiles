@@ -11,12 +11,7 @@
   "include": ["~/.config/waybar/themes/ysl/modules.json"],
 
   "modules-left": [
-    "custom/padd",
-    "custom/l_end",
     "custom/power",
-    "custom/cliphist",
-    "custom/r_end",
-    "custom/l_end",
     "cpu",
     "memory",
     "custom/r_end",
@@ -33,18 +28,10 @@
   "modules-right": [
     "custom/padd",
     "custom/l_end",
+    "pulseaudio",
     "network",
     "bluetooth",
-    "pulseaudio",
-    "pulseaudio#microphone",
-    "custom/keybindhint",
-    "custom/r_end",
-    "custom/l_end",
     "tray",
-    "custom/r_end",
-    "custom/l_end",
     "clock",
-    "custom/r_end",
-    "custom/padd"
   ]
 }
