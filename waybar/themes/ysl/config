@@ -6,7 +6,7 @@
   "mod": "dock",
   "exclusive": true,
   "passthrough": false,
-  "gtk-layer-shell": true,
+//  "gtk-layer-shell": true,
 
   "include": ["~/.config/waybar/themes/ysl/modules.json"],
 
