@@ -1,20 +1,2 @@
-2024/07/23-22:09:43.489 50589 Reusing MANIFEST /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Local Storage/leveldb/MANIFEST-000001
-2024/07/23-22:09:43.489 50589 Recovering log #8
-2024/07/23-22:09:43.490 50589 Level-0 table #11: started
-2024/07/23-22:09:43.492 50589 Level-0 table #11: 63407 bytes OK
-2024/07/23-22:09:43.493 50589 Delete type=0 #8
-2024/07/23-22:10:44.060 5058b Level-0 table #14: started
-2024/07/23-22:10:44.062 5058b Level-0 table #14: 81860 bytes OK
-2024/07/23-22:10:44.064 5058b Delete type=0 #12
-2024/07/23-22:15:24.362 5058b Level-0 table #16: started
-2024/07/23-22:15:24.364 5058b Level-0 table #16: 96264 bytes OK
-2024/07/23-22:15:24.365 5058b Delete type=0 #13
-2024/07/23-22:15:24.365 5058b Compacting 4@0 + 1@1 files
-2024/07/23-22:15:24.373 5058b Generated table #17@0: 104 keys, 328599 bytes
-2024/07/23-22:15:24.373 5058b Compacted 4@0 + 1@1 files => 328599 bytes
-2024/07/23-22:15:24.375 5058b compacted to: files[ 0 1 1 0 0 0 0 ]
-2024/07/23-22:15:24.375 5058b Delete type=2 #7
-2024/07/23-22:15:24.375 5058b Delete type=2 #9
-2024/07/23-22:15:24.375 5058b Delete type=2 #16
-2024/07/23-22:15:24.375 5058b Delete type=2 #14
-2024/07/23-22:15:24.375 5058b Delete type=2 #11
+2024/07/23-22:28:20.882 52305 Creating DB /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Local Storage/leveldb since it was missing.
+2024/07/23-22:28:20.886 52305 Reusing MANIFEST /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Local Storage/leveldb/MANIFEST-000001

@@ -1,3 +1,2 @@
-2024/07/23-22:09:44.049 50589 Reusing MANIFEST /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Session Storage/MANIFEST-000001
-2024/07/23-22:09:44.050 50589 Recovering log #3
-2024/07/23-22:09:44.050 50589 Reusing old log /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Session Storage/000003.log 
+2024/07/23-22:28:21.351 52305 Creating DB /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Session Storage since it was missing.
+2024/07/23-22:28:21.355 52305 Reusing MANIFEST /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Session Storage/MANIFEST-000001
