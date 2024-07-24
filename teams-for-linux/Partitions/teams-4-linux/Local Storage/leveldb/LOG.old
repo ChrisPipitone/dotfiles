@@ -1,0 +1,11 @@
+2024/07/23-22:00:02.827 4d3ea Creating DB /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Local Storage/leveldb since it was missing.
+2024/07/23-22:00:02.832 4d3ea Reusing MANIFEST /home/chris/.config/teams-for-linux/Partitions/teams-4-linux/Local Storage/leveldb/MANIFEST-000001
+2024/07/23-22:00:21.988 4d3ec Level-0 table #5: started
+2024/07/23-22:00:21.993 4d3ec Level-0 table #5: 294246 bytes OK
+2024/07/23-22:00:21.994 4d3ec Delete type=0 #3
+2024/07/23-22:01:22.084 4d3ec Level-0 table #7: started
+2024/07/23-22:01:22.094 4d3ec Level-0 table #7: 365734 bytes OK
+2024/07/23-22:01:22.096 4d3ec Delete type=0 #4
+2024/07/23-22:04:03.316 4d3ec Level-0 table #9: started
+2024/07/23-22:04:03.322 4d3ec Level-0 table #9: 284754 bytes OK
+2024/07/23-22:04:03.323 4d3ec Delete type=0 #6

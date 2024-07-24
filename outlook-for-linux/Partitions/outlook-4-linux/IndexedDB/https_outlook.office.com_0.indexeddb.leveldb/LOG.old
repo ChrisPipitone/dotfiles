@@ -1,0 +1,36 @@
+2024/07/23-22:11:25.287 5091f Reusing MANIFEST /home/chris/.config/outlook-for-linux/Partitions/outlook-4-linux/IndexedDB/https_outlook.office.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/07/23-22:11:25.287 5091f Recovering log #8
+2024/07/23-22:11:25.287 5091f Reusing old log /home/chris/.config/outlook-for-linux/Partitions/outlook-4-linux/IndexedDB/https_outlook.office.com_0.indexeddb.leveldb/000008.log 
+2024/07/23-22:11:25.287 5091f Delete type=2 #7
+2024/07/23-22:11:25.292 50921 Level-0 table #13: started
+2024/07/23-22:11:25.293 50921 Level-0 table #13: 533 bytes OK
+2024/07/23-22:11:25.295 50921 Delete type=0 #8
+2024/07/23-22:11:25.295 5091d Manual compaction at level-0 from '\x00\x04\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at '\x00\x04\x00\x00\x05' @ 61 : 1
+2024/07/23-22:11:25.295 5091d Compacting 1@0 + 1@1 files
+2024/07/23-22:11:25.296 5091d Generated table #14@0: 16 keys, 599 bytes
+2024/07/23-22:11:25.296 5091d Compacted 1@0 + 1@1 files => 599 bytes
+2024/07/23-22:11:25.298 5091d compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/07/23-22:11:25.298 5091d Delete type=2 #13
+2024/07/23-22:11:25.298 5091d Manual compaction at level-0 from '\x00\x04\x00\x00\x05' @ 61 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/07/23-22:11:26.542 50921 Level-0 table #16: started
+2024/07/23-22:11:26.544 50921 Level-0 table #16: 598 bytes OK
+2024/07/23-22:11:26.546 50921 Delete type=2 #10
+2024/07/23-22:11:26.546 50921 Delete type=0 #12
+2024/07/23-22:11:26.546 5091d Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\x05' @ 83 : 1
+2024/07/23-22:11:26.546 5091d Compacting 1@0 + 1@1 files
+2024/07/23-22:11:26.548 5091d Generated table #17@0: 18 keys, 515 bytes
+2024/07/23-22:11:26.548 5091d Compacted 1@0 + 1@1 files => 515 bytes
+2024/07/23-22:11:26.550 5091d compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/07/23-22:11:26.550 5091d Delete type=2 #16
+2024/07/23-22:11:26.550 5091d Manual compaction at level-0 from '\x00\x06\x00\x00\x05' @ 83 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/07/23-22:11:26.550 5091d Level-0 table #19: started
+2024/07/23-22:11:26.552 5091d Level-0 table #19: 480 bytes OK
+2024/07/23-22:11:26.553 5091d Delete type=0 #15
+2024/07/23-22:11:26.553 5091d Delete type=2 #14
+2024/07/23-22:11:26.554 5091d Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\x05' @ 109 : 0
+2024/07/23-22:11:26.554 5091d Compacting 1@0 + 1@1 files
+2024/07/23-22:11:26.555 5091d Generated table #20@0: 16 keys, 588 bytes
+2024/07/23-22:11:26.555 5091d Compacted 1@0 + 1@1 files => 588 bytes
+2024/07/23-22:11:26.556 5091d compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/07/23-22:11:26.556 5091d Delete type=2 #19
+2024/07/23-22:11:26.557 5091d Manual compaction at level-0 from '\x00\x06\x00\x00\x05' @ 109 : 0 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
