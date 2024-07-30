@@ -1,11 +1,21 @@
-const myLabel = Widget.Label({
-  label: "some example content",
-});
+const main = "/tmp/ags/main.js";
 
-const myBar = Widget.Window({
-  name: "bar",
-  anchor: ["bottom", "left", "right"],
-  child: myLabel,
-});
-
-App.config({ windows: [myBar] });
+try {
+  await Utils.execAsync([
+    "bun",
+    "build",
+    `${App.configDir}/main.ts`,
+    "--outfile",
+    main,
+    "--external",
+    "resource://*",
+    "--external",
+    "gi://*",
+    "--external",
+    "file://*",
+  ]);
+  await import(`file://${main}`);
+} catch (error) {
+  console.error(error);
+  App.quit();
+}
