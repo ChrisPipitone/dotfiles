@@ -1,0 +1,68 @@
+# Template — do not edit generated ~/.config/starship.toml directly.
+# Edit this file, then run ~/.config/tmux/apply-theme.sh to regenerate.
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[╭─](__SUBTLE__)$os$directory$git_branch$git_status$fill$cmd_duration$time
+[╰─](__SUBTLE__)$character"""
+
+add_newline = false
+
+[os]
+disabled = false
+format = '[$symbol]($style)'
+style = '__FG__'
+
+[os.symbols]
+Macos = ' '
+Linux = ' '
+Windows = ' '
+
+[directory]
+style = 'bold __ACCENT__'
+truncation_length = 3
+truncate_to_repo = true
+format = ' [$path]($style)[$read_only]($read_only_style) '
+
+[git_branch]
+symbol = ' '
+format = '[$symbol$branch]($style) '
+style = '__SUBTLE__'
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = 'bold __ERROR__'
+ahead = '⇡$count'
+behind = '⇣$count'
+diverged = '⇕⇡$ahead_count⇣$behind_count'
+modified = '!$count'
+untracked = '?$count'
+staged = '+$count'
+deleted = '✘$count'
+stashed = '$count'
+
+[fill]
+symbol = '·'
+style = '__SUBTLE__'
+
+[cmd_duration]
+min_time = 2000
+format = '[$duration]($style) '
+style = 'bold __ACCENT__'
+
+[time]
+disabled = false
+format = '[$time]($style)'
+style = '__SUBTLE__'
+time_format = '%H:%M:%S'
+
+[character]
+success_symbol = '[❯](bold __SUCCESS__)'
+error_symbol = '[❯](bold __ERROR__)'
+vicmd_symbol = '[❮](bold __SUCCESS__)'
+
+[status]
+disabled = false
+symbol = '✘'
+format = '[$symbol$status]($style) '
+style = 'bold __ERROR__'

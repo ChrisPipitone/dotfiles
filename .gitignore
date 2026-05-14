@@ -1,0 +1,4 @@
+common/.config/tmux/current-theme.conf
+common/.config/nvim/lazy-lock.json
+common/.config/tmux/plugins/
+.DS_store
