@@ -64,6 +64,9 @@ fi
 alias config='cd ~/.config && nvim'
 alias c='clear'
 
+# Regenerate starship.toml from the active theme (omarchy on Linux, ~/.config/theme.name on Mac)
+[[ -x "$HOME/.config/tmux/apply-theme.sh" ]] && "$HOME/.config/tmux/apply-theme.sh" &>/dev/null
+
 # Shell integrations
 eval "$(starship init zsh)"
 

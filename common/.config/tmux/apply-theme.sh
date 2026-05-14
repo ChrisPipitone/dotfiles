@@ -15,6 +15,9 @@ colors=""
 if [[ "$(uname)" == "Linux" ]]; then
   omarchy_theme="$HOME/.config/omarchy/current/theme.name"
   [[ -f "$omarchy_theme" ]] && theme=$(tr -d '[:space:]' < "$omarchy_theme")
+  # Use the already-resolved current theme colors directly — no directory search needed.
+  omarchy_colors="$HOME/.config/omarchy/current/theme/colors.toml"
+  [[ -f "$omarchy_colors" ]] && colors="$omarchy_colors"
 fi
 
 if [[ -z "$theme" ]]; then
@@ -22,9 +25,10 @@ if [[ -z "$theme" ]]; then
   [[ -f "$user_theme" ]] && theme=$(tr -d '[:space:]' < "$user_theme")
 fi
 
-if [[ -n "$theme" ]]; then
+if [[ -z "$colors" ]] && [[ -n "$theme" ]]; then
   for dir in \
     "$HOME/.local/share/omarchy/themes/$theme" \
+    "$HOME/.config/omarchy/themes/$theme" \
     "$HOME/.config/themes/$theme"; do
     if [[ -f "$dir/colors.toml" ]]; then
       colors="$dir/colors.toml"
@@ -34,7 +38,7 @@ if [[ -n "$theme" ]]; then
 fi
 
 if [[ -n "$colors" ]]; then
-  get() { grep "^$1 " "$colors" | sed 's/.*= *"\(.*\)"/\1/'; }
+  get() { grep "^$1 " "$colors" | sed 's/.*= *"\([^"]*\)".*/\1/'; }
   bg=$(get background)
   fg=$(get foreground)
   accent=$(get accent)

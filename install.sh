@@ -138,7 +138,10 @@ stow_safe() {
     file=$(echo "$line" | grep "existing target is not owned by stow:" | sed 's/.*stow: //' | xargs) || continue
     [[ -z "$file" ]] && continue
     local src="$HOME/$file"
-    if [[ -e "$src" && ! -L "$src" ]]; then
+    if [[ -L "$src" ]]; then
+      info "Removing stale symlink: $src"
+      rm "$src"
+    elif [[ -e "$src" ]]; then
       local dest="$BACKUP_DIR/$file"
       mkdir -p "$(dirname "$dest")"
       info "Backing up: $src → $dest"
