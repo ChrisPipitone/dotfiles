@@ -51,6 +51,95 @@ else
   success="#FFC107"
 fi
 
+# --- Generate lsd theme ---
+LSD_THEME_DIR="$HOME/.config/lsd/themes"
+LSD_THEME_OUT="$LSD_THEME_DIR/current.yaml"
+mkdir -p "$LSD_THEME_DIR"
+
+hex_to_rgb() {
+  local hex="${1#\#}"
+  echo "[$(( 16#${hex:0:2} )), $(( 16#${hex:2:2} )), $(( 16#${hex:4:2} ))]"
+}
+
+if [[ -n "$colors" ]]; then
+  yellow=$(grep "^color3 " "$colors" | sed 's/.*= *"\(.*\)"/\1/')
+else
+  yellow="#b91c1c"
+fi
+
+cat > "$LSD_THEME_OUT" << LSDEOF
+user:
+  rgb: $(hex_to_rgb "$accent")
+group:
+  rgb: $(hex_to_rgb "$subtle")
+permission:
+  read:
+    rgb: $(hex_to_rgb "$success")
+  write:
+    rgb: $(hex_to_rgb "$yellow")
+  exec:
+    rgb: $(hex_to_rgb "$error")
+  exec-sticky:
+    rgb: $(hex_to_rgb "$accent")
+  no-access:
+    rgb: $(hex_to_rgb "$subtle")
+  octal:
+    rgb: $(hex_to_rgb "$accent")
+  acl:
+    rgb: $(hex_to_rgb "$success")
+  context:
+    rgb: $(hex_to_rgb "$fg")
+date:
+  hour-old:
+    rgb: $(hex_to_rgb "$fg")
+  day-old:
+    rgb: $(hex_to_rgb "$subtle")
+  older:
+    rgb: $(hex_to_rgb "$subtle")
+size:
+  none:
+    rgb: $(hex_to_rgb "$subtle")
+  small:
+    rgb: $(hex_to_rgb "$fg")
+  medium:
+    rgb: $(hex_to_rgb "$accent")
+  large:
+    rgb: $(hex_to_rgb "$error")
+inode:
+  valid:
+    rgb: $(hex_to_rgb "$accent")
+  invalid:
+    rgb: $(hex_to_rgb "$subtle")
+links:
+  valid:
+    rgb: $(hex_to_rgb "$accent")
+  invalid:
+    rgb: $(hex_to_rgb "$error")
+tree-edge:
+  rgb: $(hex_to_rgb "$subtle")
+git-status:
+  default:
+    rgb: $(hex_to_rgb "$subtle")
+  unmodified:
+    rgb: $(hex_to_rgb "$subtle")
+  ignored:
+    rgb: $(hex_to_rgb "$subtle")
+  new-in-index:
+    rgb: $(hex_to_rgb "$success")
+  new-in-workdir:
+    rgb: $(hex_to_rgb "$success")
+  typechange:
+    rgb: $(hex_to_rgb "$yellow")
+  deleted:
+    rgb: $(hex_to_rgb "$error")
+  renamed:
+    rgb: $(hex_to_rgb "$accent")
+  modified:
+    rgb: $(hex_to_rgb "$yellow")
+  conflicted:
+    rgb: $(hex_to_rgb "$error")
+LSDEOF
+
 # --- Generate starship config ---
 STARSHIP_BASE="$HOME/.config/starship/starship.base.toml"
 STARSHIP_OUT="$HOME/.config/starship.toml"
