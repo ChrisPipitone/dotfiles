@@ -1,0 +1,31 @@
+layout: grid
+
+sorting:
+  column: name
+  reverse: false
+  dir-grouping: first
+
+date: relative
+
+size: short
+
+icons:
+  when: auto
+  theme: fancy
+  separator: "  "
+
+blocks:
+  - permission
+  - user
+  - size
+  - date
+  - name
+  - git
+
+symlink-arrow: "→"
+
+color:
+  when: auto
+  theme: current
+
+hyperlink: never
