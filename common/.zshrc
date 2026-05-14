@@ -65,6 +65,7 @@ alias config='cd ~/.config && nvim'
 alias c='clear'
 
 # Shell integrations
+[[ -f "$HOME/.config/ls-colors.sh" ]] && source "$HOME/.config/ls-colors.sh"
 eval "$(starship init zsh)"
 
 # Transient prompt via preexec — collapses previous 2-line prompt to ❯ before output
