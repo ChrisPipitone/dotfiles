@@ -52,9 +52,8 @@ else
 fi
 
 # --- Generate lsd theme ---
-LSD_THEME_DIR="$HOME/.config/lsd/themes"
-LSD_THEME_OUT="$LSD_THEME_DIR/current.yaml"
-mkdir -p "$LSD_THEME_DIR"
+LSD_THEME_OUT="$HOME/.config/lsd/colors.yaml"
+mkdir -p "$HOME/.config/lsd"
 
 hex_to_rgb() {
   local hex="${1#\#}"
