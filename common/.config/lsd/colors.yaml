@@ -1,0 +1,70 @@
+user:
+  rgb: [138, 138, 141]
+group:
+  rgb: [138, 138, 141]
+permission:
+  read:
+    rgb: [255, 193, 7]
+  write:
+    rgb: [185, 28, 28]
+  exec:
+    rgb: [211, 95, 95]
+  exec-sticky:
+    rgb: [230, 142, 13]
+  no-access:
+    rgb: [138, 138, 141]
+  octal:
+    rgb: [234, 234, 234]
+  acl:
+    rgb: [190, 190, 190]
+  context:
+    rgb: [190, 190, 190]
+date:
+  hour-old:
+    rgb: [190, 190, 190]
+  day-old:
+    rgb: [245, 158, 11]
+  older:
+    rgb: [138, 138, 141]
+size:
+  none:
+    rgb: [138, 138, 141]
+  small:
+    rgb: [190, 190, 190]
+  medium:
+    rgb: [245, 158, 11]
+  large:
+    rgb: [211, 95, 95]
+inode:
+  valid:
+    rgb: [190, 190, 190]
+  invalid:
+    rgb: [138, 138, 141]
+links:
+  valid:
+    rgb: [190, 190, 190]
+  invalid:
+    rgb: [211, 95, 95]
+tree-edge:
+  rgb: [138, 138, 141]
+git-status:
+  default:
+    rgb: [138, 138, 141]
+  unmodified:
+    rgb: [138, 138, 141]
+  ignored:
+    rgb: [138, 138, 141]
+  new-in-index:
+    rgb: [255, 193, 7]
+  new-in-workdir:
+    rgb: [255, 193, 7]
+  typechange:
+    rgb: [245, 158, 11]
+  deleted:
+    rgb: [211, 95, 95]
+  renamed:
+    rgb: [190, 190, 190]
+  modified:
+    rgb: [185, 28, 28]
+  conflicted:
+    rgb: [211, 95, 95]

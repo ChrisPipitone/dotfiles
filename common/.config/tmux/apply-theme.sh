@@ -41,6 +41,10 @@ if [[ -n "$colors" ]]; then
   subtle=$(get color8)
   error=$(get color1)
   success=$(get color2)
+  yellow=$(get color3)
+  teal=$(get color6)
+  mid=$(get color12)
+  bright=$(get color14)
 else
   theme="matte-black"
   bg="#121212"
@@ -49,6 +53,10 @@ else
   subtle="#8a8a8d"
   error="#D35F5F"
   success="#FFC107"
+  yellow="#b91c1c"
+  teal="#bebebe"
+  mid="#f59e0b"
+  bright="#eaeaea"
 fi
 
 # --- Generate lsd theme ---
@@ -60,15 +68,15 @@ hex_to_rgb() {
   echo "[$(( 16#${hex:0:2} )), $(( 16#${hex:2:2} )), $(( 16#${hex:4:2} ))]"
 }
 
-if [[ -n "$colors" ]]; then
-  yellow=$(grep "^color3 " "$colors" | sed 's/.*= *"\(.*\)"/\1/')
-else
-  yellow="#b91c1c"
-fi
+# r;g;b format for LS_COLORS truecolor entries
+hex_to_ls() {
+  local hex="${1#\#}"
+  printf '%d;%d;%d' "$(( 16#${hex:0:2} ))" "$(( 16#${hex:2:2} ))" "$(( 16#${hex:4:2} ))"
+}
 
 cat > "$LSD_THEME_OUT" << LSDEOF
 user:
-  rgb: $(hex_to_rgb "$accent")
+  rgb: $(hex_to_rgb "$subtle")
 group:
   rgb: $(hex_to_rgb "$subtle")
 permission:
@@ -83,16 +91,16 @@ permission:
   no-access:
     rgb: $(hex_to_rgb "$subtle")
   octal:
-    rgb: $(hex_to_rgb "$accent")
+    rgb: $(hex_to_rgb "$bright")
   acl:
-    rgb: $(hex_to_rgb "$success")
+    rgb: $(hex_to_rgb "$teal")
   context:
     rgb: $(hex_to_rgb "$fg")
 date:
   hour-old:
     rgb: $(hex_to_rgb "$fg")
   day-old:
-    rgb: $(hex_to_rgb "$subtle")
+    rgb: $(hex_to_rgb "$mid")
   older:
     rgb: $(hex_to_rgb "$subtle")
 size:
@@ -101,17 +109,17 @@ size:
   small:
     rgb: $(hex_to_rgb "$fg")
   medium:
-    rgb: $(hex_to_rgb "$accent")
+    rgb: $(hex_to_rgb "$mid")
   large:
     rgb: $(hex_to_rgb "$error")
 inode:
   valid:
-    rgb: $(hex_to_rgb "$accent")
+    rgb: $(hex_to_rgb "$teal")
   invalid:
     rgb: $(hex_to_rgb "$subtle")
 links:
   valid:
-    rgb: $(hex_to_rgb "$accent")
+    rgb: $(hex_to_rgb "$teal")
   invalid:
     rgb: $(hex_to_rgb "$error")
 tree-edge:
@@ -128,16 +136,22 @@ git-status:
   new-in-workdir:
     rgb: $(hex_to_rgb "$success")
   typechange:
-    rgb: $(hex_to_rgb "$yellow")
+    rgb: $(hex_to_rgb "$mid")
   deleted:
     rgb: $(hex_to_rgb "$error")
   renamed:
-    rgb: $(hex_to_rgb "$accent")
+    rgb: $(hex_to_rgb "$teal")
   modified:
     rgb: $(hex_to_rgb "$yellow")
   conflicted:
     rgb: $(hex_to_rgb "$error")
 LSDEOF
+
+# LS_COLORS: dirs, symlinks, executables, file types
+# Each type gets a distinct palette slot
+cat > "$HOME/.config/ls-colors.sh" << LSEOF
+export LS_COLORS="di=1;38;2;$(hex_to_ls "$accent"):ln=38;2;$(hex_to_ls "$teal");4:ex=38;2;$(hex_to_ls "$success"):or=38;2;$(hex_to_ls "$error");4:fi=38;2;$(hex_to_ls "$fg"):*.md=38;2;$(hex_to_ls "$accent"):*.txt=38;2;$(hex_to_ls "$fg"):*.sh=38;2;$(hex_to_ls "$success"):*.lua=38;2;$(hex_to_ls "$mid"):*.py=38;2;$(hex_to_ls "$mid"):*.js=38;2;$(hex_to_ls "$mid"):*.ts=38;2;$(hex_to_ls "$mid"):*.rs=38;2;$(hex_to_ls "$mid"):*.go=38;2;$(hex_to_ls "$mid"):*.json=38;2;$(hex_to_ls "$yellow"):*.yaml=38;2;$(hex_to_ls "$yellow"):*.yml=38;2;$(hex_to_ls "$yellow"):*.toml=38;2;$(hex_to_ls "$yellow")"
+LSEOF
 
 # --- Generate starship config ---
 STARSHIP_BASE="$HOME/.config/starship/starship.base.toml"
