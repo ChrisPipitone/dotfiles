@@ -26,6 +26,5 @@ symlink-arrow: "→"
 
 color:
   when: auto
-  theme: current
 
 hyperlink: never
