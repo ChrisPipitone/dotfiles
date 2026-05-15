@@ -1,0 +1,42 @@
+# Editor
+alias vi='nvim'
+alias vim='nvim'
+
+# File system
+if command -v lsd &>/dev/null; then
+  alias ls='lsd'
+  alias la='lsd -la'
+  alias ll='lsd -lA'
+  alias lt='lsd --tree'
+  alias lsa='lsd -a'
+  alias lta='lsd --tree -a'
+elif command -v colorls &>/dev/null; then
+  alias ls='colorls'
+  alias la='colorls -la'
+  alias ll='colorls -l'
+fi
+
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+# Directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Tools
+alias c='clear'
+alias d='docker'
+alias r='rails'
+alias config='cd ~/.config && nvim'
+alias decompress='tar -xzf'
+
+# Git
+alias g='git'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
+alias gcad='git commit -a --amend'
+
+# Linux-only
+if [[ "$(uname)" == "Linux" ]]; then
+  alias rnote="GDK_DEBUG=no-vsync rnote"
+fi
