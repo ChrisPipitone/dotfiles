@@ -3,7 +3,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[╭─](__SUBTLE__)$os$directory$git_branch$git_status$fill$cmd_duration$time
+[╭─](__SUBTLE__)$os$directory$git_branch$git_status$fill$cmd_duration$python$time
 [╰─](__SUBTLE__)$character"""
 
 add_newline = false
@@ -14,9 +14,10 @@ format = '[$symbol]($style)'
 style = '__FG__'
 
 [os.symbols]
-Macos = ' '
-Linux = ' '
-Windows = ' '
+Arch = ' '
+Macos = ' '
+Linux = ' '
+Windows = ' '
 
 [directory]
 style = 'bold __ACCENT__'
@@ -27,7 +28,7 @@ format = ' [$path]($style)[$read_only]($read_only_style) '
 [git_branch]
 symbol = ' '
 format = '[$symbol$branch]($style) '
-style = '__SUBTLE__'
+style = 'bold __FG__'
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
@@ -54,12 +55,18 @@ style = 'bold __ACCENT__'
 disabled = false
 format = '[$time]($style)'
 style = '__SUBTLE__'
-time_format = '%H:%M:%S'
+time_format = '%H:%M'
 
 [character]
 success_symbol = '[❯](bold __SUCCESS__)'
 error_symbol = '[❯](bold __ERROR__)'
 vicmd_symbol = '[❮](bold __SUCCESS__)'
+
+[python]
+format = '[\($virtualenv\) ](__FG__)'
+detect_extensions = []
+detect_files = []
+detect_folders = []
 
 [status]
 disabled = false

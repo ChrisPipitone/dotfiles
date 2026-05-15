@@ -10,6 +10,8 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+source ~/.zsh/envs
+
 # fzf shell integration loads ^T, ^R, Alt+C, and fzf-completion for ^I
 eval "$(fzf --zsh)"
 # Reset ^I to expand-or-complete so fzf-tab wraps the standard widget, not fzf-completion
@@ -43,26 +45,16 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt correct
 
-export EDITOR='nvim'
-
 # vim mode
 bindkey -v
 bindkey "^?" backward-delete-char
 
-alias vi='nvim'
-alias vim='nvim'
-if command -v lsd &>/dev/null; then
-  alias ls='lsd'
-  alias la='lsd -la'
-  alias ll='lsd -lA'
-  alias lt='lsd --tree'
-elif command -v colorls &>/dev/null; then
-  alias ls='colorls'
-  alias la='colorls -la'
-  alias ll='colorls -l'
-fi
-alias config='cd ~/.config && nvim'
-alias c='clear'
+source ~/.zsh/aliases
+source ~/.zsh/functions
+source ~/.zsh/init
+
+# Regenerate starship.toml from the active theme (omarchy on Linux, ~/.config/theme.name on Mac)
+[[ -x "$HOME/.config/tmux/apply-theme.sh" ]] && "$HOME/.config/tmux/apply-theme.sh" &>/dev/null
 
 # Shell integrations
 eval "$(starship init zsh)"
@@ -79,8 +71,5 @@ _transient_preexec() {
   printf '\e[2A\r\e[J%s❯\e[0m %s\n' "$color" "$1"
 }
 add-zsh-hook preexec _transient_preexec
-
-PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-export PATH
 
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
