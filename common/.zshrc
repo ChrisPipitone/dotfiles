@@ -23,6 +23,9 @@ zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 zinit light Aloxaf/fzf-tab
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(forward-char end-of-line vi-forward-char vi-end-of-line vi-add-eol)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(forward-word vi-forward-word vi-forward-word-end vi-forward-blank-word vi-forward-blank-word-end)
+bindkey '^f' autosuggest-accept
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
