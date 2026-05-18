@@ -4,4 +4,5 @@ export BAT_THEME=ansi
 
 export PATH="$HOME/.local/bin:$PATH"
 [[ "$(uname)" == "Darwin" ]] && PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+[[ "$(uname)" == "Darwin" ]] && PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH
