@@ -12,6 +12,7 @@
 ## Commits
 - NEVER add co-author lines. Commits are solely mine.
 - Conventional commits style (feat/fix/refactor/chore etc).
+- Group commits conceptually — one commit per logical unit of work, not one giant commit per session.
 
 ## Code
 - No comments unless the WHY is non-obvious.
