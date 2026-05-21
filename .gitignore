@@ -2,3 +2,11 @@ common/.config/tmux/current-theme.conf
 common/.config/nvim/lazy-lock.json
 common/.config/tmux/plugins/
 .DS_store
+
+# Electron app caches — contain auth tokens and credentials in LevelDB files
+**/leveldb/
+**/IndexedDB/
+**/Cache/
+**/GPUCache/
+teams-for-linux/
+outlook-for-linux/
