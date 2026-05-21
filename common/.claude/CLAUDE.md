@@ -25,6 +25,14 @@
 - Cross-platform: Arch Linux (omarchy theming) + macOS.
 - Shell: zsh. Editor: neovim. Multiplexer: tmux.
 
+## Security
+- Never `git add .` from home dir or any dir adjacent to app data — always add specific paths.
+- Electron apps (Teams, Outlook, Slack, Chrome) store auth tokens/credentials in LevelDB under `~/.config/`. One stray `git add .` captures them.
+- `.gitignore` should proactively block `**/leveldb/`, `**/Cache/`, `**/IndexedDB/` in any dotfiles repo.
+- Deleting files in a commit does NOT purge history — only `git filter-repo --invert-paths` + force push does.
+- If secrets hit a public repo: rotate/revoke credentials FIRST, purge history second. Treat as compromised regardless.
+- When exploring a repo, check `.gitignore` for Electron cache gaps and flag proactively.
+
 ## Stack
 - TypeScript / JavaScript
 - Python
