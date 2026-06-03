@@ -76,3 +76,8 @@ _transient_preexec() {
 add-zsh-hook preexec _transient_preexec
 
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/chris/.lmstudio/bin"
+# End of LM Studio CLI section
+

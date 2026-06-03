@@ -39,3 +39,12 @@
 - Rust
 - C (C11 — embedded/microcontrollers)
 - C++ (C++17 embedded, C++20 finance/general)
+
+## Portfolio entries (portfolio-blog)
+- File: `src/content/projects/<slug>.md` — frontmatter + markdown body
+- Required frontmatter: `title`, `description`, `date`, `tags`, `draft`; optional: `github`, `image`, `featured`, `status`
+- Use `status: "wip"` for in-progress projects; `featured: false` until mature
+- Voice: concrete problem statement first, reasoning second, feature list never
+- Business sensitivity: describe what it does for users, not the proprietary mechanism — keep differentiators vague by default unless Chris says otherwise
+- WIP entries: skip "What I Built" depth; brief stack section + status note is enough
+- Stack section: bullet list with brief rationale note where non-obvious (e.g. cross-platform parity reason for Zustand)
