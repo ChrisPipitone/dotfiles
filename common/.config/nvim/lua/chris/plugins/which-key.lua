@@ -13,6 +13,7 @@ return {
       { "<leader>t", group = "tabs" },
       { "<leader>w", group = "session" },
       { "<leader>x", group = "trouble/todo" },
+      { "<leader>d", group = "debug" },
     },
   },
 }
