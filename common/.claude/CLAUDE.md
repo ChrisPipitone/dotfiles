@@ -38,13 +38,12 @@
 - Python
 - Rust
 - C (C11 — embedded/microcontrollers)
-- C++ (C++17 embedded, C++20 finance/general)
+- C++ (C++17 — desktop/TUI, professional patterns; C++20 — finance/general, insights)
 
-## Portfolio entries (portfolio-blog)
-- File: `src/content/projects/<slug>.md` — frontmatter + markdown body
-- Required frontmatter: `title`, `description`, `date`, `tags`, `draft`; optional: `github`, `image`, `featured`, `status`
-- Use `status: "wip"` for in-progress projects; `featured: false` until mature
-- Voice: concrete problem statement first, reasoning second, feature list never
-- Business sensitivity: describe what it does for users, not the proprietary mechanism — keep differentiators vague by default unless Chris says otherwise
-- WIP entries: skip "What I Built" depth; brief stack section + status note is enough
-- Stack section: bullet list with brief rationale note where non-obvious (e.g. cross-platform parity reason for Zustand)
+## Teaching (C++)
+- Format: socratic loop — question + answer blocks, not paragraphs
+- Level: competent engineer, college C++, re-learning professional patterns — explain WHY at systems level, not WHAT at syntax level
+- Embedded callouts: include when relevant; treat as newbie — define terms, no assumed vocabulary
+- C++20 callouts: separate section after each change or end-of-session roundup; never inline in code
+
+@~/.claude/CLAUDE.local.md

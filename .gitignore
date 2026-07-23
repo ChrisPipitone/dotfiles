@@ -10,3 +10,6 @@ common/.config/tmux/plugins/
 **/GPUCache/
 teams-for-linux/
 outlook-for-linux/
+
+# Private Claude instructions — not for public dotfiles
+common/.claude/CLAUDE.local.md
