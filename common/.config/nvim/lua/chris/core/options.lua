@@ -1,9 +1,5 @@
 local opt = vim.opt
 
--- line numbers
-opt.relativenumber = true
-opt.number = true
-
 -- tabs & indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -17,13 +13,18 @@ opt.wrap = true
 opt.ignorecase = true
 opt.smartcase = true
 
--- appearance
-opt.cursorline = true
-opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
-opt.scrolloff = 8
-opt.sidescrolloff = 8
+-- appearance: VSCode renders its own gutter, cursorline and colors, so these
+-- only apply to terminal nvim
+if not vim.g.vscode then
+	opt.relativenumber = true
+	opt.number = true
+	opt.cursorline = true
+	opt.termguicolors = true
+	opt.background = "dark"
+	opt.signcolumn = "yes"
+	opt.scrolloff = 8
+	opt.sidescrolloff = 8
+end
 
 -- editing
 opt.backspace = "indent,eol,start"

@@ -14,6 +14,16 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Inside vscode-neovim the editor owns UI, LSP, completion and debugging.
+-- Loading the full spec there fights VSCode's own providers, so that path gets
+-- a motion-only set. Terminal nvim (omarchy, mac, WSL) is unaffected.
+if vim.g.vscode then
+	require("lazy").setup({ { import = "chris.vscode" } }, {
+		change_detection = { notify = false },
+	})
+	return
+end
+
 require("lazy").setup({
 	{ import = "chris.plugins" },
 	{ import = "chris.plugins.lsp" },
