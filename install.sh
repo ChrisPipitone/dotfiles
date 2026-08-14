@@ -79,7 +79,25 @@ if [[ "$OS" == "Linux" ]]; then
   case "$MGR" in
     apt)
       sudo apt-get update -qq
-      install_pkg fzf ripgrep tmux
+      install_pkg fzf ripgrep tmux zoxide gh
+
+      # bat: named batcat in apt; symlink to bat
+      install_pkg bat 2>/dev/null && {
+        mkdir -p "$HOME/.local/bin"
+        [[ -x /usr/bin/batcat ]] && ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
+      } || true
+
+      # lazygit: not in apt before 24.10 — fall back to the release tarball
+      install_pkg lazygit 2>/dev/null || {
+        warn "lazygit not in apt — installing from GitHub release..."
+        LG_VER=$(curl -fsSL https://api.github.com/repos/jesseduffield/lazygit/releases/latest \
+                 | grep -Po '"tag_name": *"v\K[^"]*') || true
+        if [[ -n "${LG_VER:-}" ]]; then
+          curl -fsSL "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LG_VER}_Linux_x86_64.tar.gz" \
+            | tar -xz -C /tmp lazygit
+          install -Dm755 /tmp/lazygit "$HOME/.local/bin/lazygit" && rm -f /tmp/lazygit
+        fi
+      }
 
       # lsd: in apt on Ubuntu 22.04+
       install_pkg lsd 2>/dev/null || {
@@ -106,11 +124,11 @@ if [[ "$OS" == "Linux" ]]; then
       ;;
 
     pacman)
-      sudo pacman -S --noconfirm fzf ripgrep tmux neovim lsd fd lazygit
+      sudo pacman -S --noconfirm fzf ripgrep tmux neovim lsd fd lazygit bat zoxide github-cli
       ;;
 
     dnf)
-      sudo dnf install -y fzf ripgrep tmux neovim lsd fd-find
+      sudo dnf install -y fzf ripgrep tmux neovim lsd fd-find bat zoxide gh lazygit
       ;;
   esac
 
@@ -121,8 +139,21 @@ if [[ "$OS" == "Linux" ]]; then
   fi
 
   if $IS_WSL; then
-    warn "WSL detected: clipboard (tmux-yank) needs win32yank — install from https://github.com/equalsraf/win32yank"
+    warn "WSL: set appendWindowsPath=false in /etc/wsl.conf, then 'wsl --shutdown'."
+    warn "     .zsh/envs re-adds only the VS Code bin dir and win32yank.exe."
+    warn "     win32yank ships with Windows Neovim (C:\\Program Files\\Neovim\\bin)."
   fi
+fi
+
+# --- Toolchain managers (all platforms) ---
+if ! command -v mise &>/dev/null; then
+  info "Installing mise..."
+  curl -fsSL https://mise.run | sh
+fi
+
+if ! command -v uv &>/dev/null; then
+  info "Installing uv..."
+  curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
 # --- Backup existing real files that would conflict with stow ---
