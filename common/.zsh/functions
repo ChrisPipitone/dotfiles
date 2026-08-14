@@ -1,6 +1,31 @@
 # Smart nvim opener
 n() { [[ $# -eq 0 ]] && nvim . || nvim "$@"; }
 
+# Auto-activate python venv on directory change
+# add-zsh-hook autoloaded here because this file is sourced before starship init
+autoload -Uz add-zsh-hook
+
+_venv_auto() {
+  local d=$PWD found=""
+  while [[ -n $d ]]; do
+    [[ -f $d/.venv/bin/activate ]] && { found=$d/.venv; break; }
+    [[ -f $d/venv/bin/activate ]]  && { found=$d/venv;  break; }
+    d=${d%/*}
+  done
+
+  if [[ -n $found ]]; then
+    [[ $VIRTUAL_ENV == $found ]] && return
+    VIRTUAL_ENV_DISABLE_PROMPT=1 source $found/bin/activate
+    _VENV_AUTO=1
+  elif [[ -n $VIRTUAL_ENV && -n $_VENV_AUTO ]] && (( $+functions[deactivate] )); then
+    deactivate
+    unset _VENV_AUTO
+  fi
+}
+
+add-zsh-hook chpwd _venv_auto
+_venv_auto
+
 # Smart cd via zoxide
 if command -v zoxide &>/dev/null; then
   zd() {
@@ -13,6 +38,22 @@ if command -v zoxide &>/dev/null; then
     fi
   }
   alias cd="zd"
+fi
+
+# WSL: pick a project and open it in VSCode. Launching from inside WSL is what
+# guarantees a Remote-WSL window — opening the same folder from a Windows
+# window yields a local one and the "Reopen in WSL" prompt.
+if [[ -n "$WSL_DISTRO_NAME" ]] && command -v fzf &>/dev/null; then
+  p() {
+    local root=${PROJECTS_DIR:-$HOME/projects} d
+    # Repo roots, not directories — projects sit at mixed depths under $root.
+    # -prune stops the descent at each .git so nested checkouts stay cheap.
+    # fd is not used here: it skips .git even with -H.
+    d=$(find "$root" -maxdepth 4 -type d -name .git -prune -printf '%h\n' 2>/dev/null \
+        | sed "s|^$root/||" | sort | fzf --prompt='project> ') || return
+    [[ -z $d ]] && return
+    builtin cd "$root/$d" && code .
+  }
 fi
 
 # Compression
