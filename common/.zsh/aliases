@@ -15,7 +15,13 @@ elif command -v colorls &>/dev/null; then
   alias ll='colorls -l'
 fi
 
-alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+if command -v bat &>/dev/null; then
+  alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+elif command -v batcat &>/dev/null; then
+  alias ff="fzf --preview 'batcat --style=numbers --color=always {}'"
+else
+  alias ff="fzf --preview 'cat {}'"
+fi
 
 # Directories
 alias ..='cd ..'
@@ -24,8 +30,6 @@ alias ....='cd ../../..'
 
 # Tools
 alias c='clear'
-alias d='docker'
-alias r='rails'
 alias config='cd ~/.config && nvim'
 alias decompress='tar -xzf'
 
