@@ -4,11 +4,9 @@ return {
 	config = function()
 		local lint = require("lint")
 
+		-- js/ts diagnostics come from the biome LSP (see lsp/lspconfig.lua).
+		-- svelte keeps eslint_d because biome does not support it.
 		lint.linters_by_ft = {
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			javascriptreact = { "eslint_d" },
-			typescriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
 			python = { "ruff" },
 		}

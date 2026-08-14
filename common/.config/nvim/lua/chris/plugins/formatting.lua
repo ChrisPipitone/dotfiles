@@ -4,19 +4,32 @@ return {
   config = function()
     local conform = require("conform")
 
+    -- Biome where it is supported, prettier everywhere else. Biome has no
+    -- yaml/markdown/svelte/liquid support and its HTML support is still
+    -- experimental, so those stay on prettier outright.
+    local js = { "biome", "prettier", stop_after_first = true }
+
     conform.setup({
+      -- conform's biome sets cwd but not require_cwd, so by default it runs
+      -- even with no biome.json and silently reformats with nvim's shiftwidth.
+      -- Requiring the config makes it skip, so stop_after_first reaches
+      -- prettier in projects that don't use biome.
+      formatters = {
+        biome = { require_cwd = true },
+      },
       formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
+        javascript = js,
+        typescript = js,
+        javascriptreact = js,
+        typescriptreact = js,
+        json = js,
+        jsonc = js,
+        css = js,
+        graphql = js,
         svelte = { "prettier" },
-        css = { "prettier" },
         html = { "prettier" },
-        json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
-        graphql = { "prettier" },
         liquid = { "prettier" },
         lua = { "stylua" },
         python = { "ruff_organize_imports", "ruff_format" },

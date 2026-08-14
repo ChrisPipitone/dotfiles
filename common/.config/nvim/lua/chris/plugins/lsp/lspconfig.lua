@@ -107,10 +107,17 @@ return {
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
     })
 
+    -- biome owns js/ts formatting and diagnostics; ts_ls stays for type
+    -- intelligence. Only attaches when the project has a biome.json.
+    vim.lsp.config("biome", {
+      root_markers = { "biome.json", "biome.jsonc" },
+      workspace_required = true,
+    })
+
     -- Enable servers; vim.lsp.enable() is declarative and safe to call
     -- even if a server isn't installed yet (mason will install on first run)
     local servers = {
-      "ts_ls", "html", "tailwindcss", "pyright", "ruff",
+      "ts_ls", "biome", "html", "tailwindcss", "pyright", "ruff",
       "clangd", "neocmake", "dockerls", "emmet_ls", "lua_ls",
     }
     for _, server in ipairs(servers) do

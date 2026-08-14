@@ -20,6 +20,11 @@ return {
 		})
 
 		mason_lspconfig.setup({
+			-- biome is deliberately absent: mason's npm install-strategy=shallow
+			-- skips the @biomejs/cli-<platform> optional dep, producing a shim
+			-- that cannot resolve its binary. Installed via mise instead
+			-- (`mise use -g npm:@biomejs/biome`); conform and the LSP both find
+			-- it on PATH, and prefer a project's node_modules copy when present.
 			ensure_installed = {
 				"ts_ls",
 				"html",
