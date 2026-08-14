@@ -1,6 +1,8 @@
 # dotfiles
 
-Personal dotfiles for macOS and Arch Linux (via [omarchy](https://github.com/basecamp/omarchy)). Uses [GNU Stow](https://www.gnu.org/software/stow/) to manage symlinks.
+Personal dotfiles for macOS, Arch Linux (via [omarchy](https://github.com/basecamp/omarchy)) and WSL2/Ubuntu. Uses [GNU Stow](https://www.gnu.org/software/stow/) to manage symlinks.
+
+Toolchains are managed by [mise](https://mise.jdx.dev) (node, and anything else version-pinned per project) and [uv](https://docs.astral.sh/uv/) (Python).
 
 ## Structure
 
@@ -123,6 +125,39 @@ These are sourced automatically by omarchy's `hyprland.conf`.
 | Reload tmux theme | `prefix + T` |
 | Reload tmux config | `prefix + r` |
 | Reload nvim theme | restart nvim (or `:source $MYVIMRC` + `:Lazy load <plugin>`) |
+
+## WSL2
+
+`install.sh` handles the packages, but two things are outside its reach.
+
+**1. Keep `$PATH` off the Windows filesystem.** By default WSL appends all of Windows' `PATH`, so every `command -v` and tab-completion stats across 9p, and `npm`/`npx` resolve to the Windows binaries — which then write `node_modules/.bin/` shims containing Windows paths that cannot execute under Linux. Add to `/etc/wsl.conf`:
+
+```ini
+[interop]
+appendWindowsPath = false
+```
+
+Then `wsl --shutdown` from PowerShell. `common/.zsh/envs` re-adds only the two directories actually needed — the VS Code `bin` dir (for `code .`) and `C:\Program Files\Neovim\bin` (for `win32yank.exe`, the nvim clipboard provider). Both are found by glob, so no username is hardcoded.
+
+To revert: delete those two lines and `wsl --shutdown` again.
+
+**2. Always land in a Remote-WSL window.** Remote context is a property of the *window*, fixed at launch — there is no "always use WSL" setting. Three launch paths need covering:
+
+| Path | Fix |
+|---|---|
+| Taskbar / Start cold start | Retarget the shortcut: `Code.exe --remote wsl+Ubuntu /home/<you>/projects` |
+| Window restore | `"window.restoreWindows": "all"` |
+| Switching projects | `Ctrl+R` (Open Recent) preserves the remote authority; or use `p` |
+
+`p` is a WSL-only zsh function (`common/.zsh/functions`) — fzf over git repo roots under `~/projects`, then `code .` from inside WSL, which guarantees a remote window. Override the search root with `$PROJECTS_DIR`.
+
+Right-click → "Open with Code" from Windows Explorer always produces a *local* window and no setting overrides it. Use `p` or `Ctrl+R`.
+
+## Neovim inside VSCode
+
+`lua/chris/lazy.lua` branches on `vim.g.vscode`. Terminal nvim loads the full spec; [vscode-neovim](https://github.com/vscode-neovim/vscode-neovim) loads `lua/chris/vscode.lua` instead — motions and text objects only, since VSCode owns LSP, completion, diagnostics, formatting and debugging. That file lives outside `lua/chris/plugins/` so the normal directory import can never pick it up.
+
+VSCode-side, `remote.extensionKind` forces the extension to run in WSL (it declares `["ui","workspace"]` and would otherwise resolve to the Windows host, using a Windows nvim and a different config).
 
 ## Notes
 
