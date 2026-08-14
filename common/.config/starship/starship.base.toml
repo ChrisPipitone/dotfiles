@@ -13,9 +13,13 @@ disabled = false
 format = '[$symbol]($style)'
 style = '__FG__'
 
+# starship reports the distro, not a generic "Linux", so a distro missing
+# from this map falls through to starship's own default -- which for Ubuntu is
+# the dartboard emoji. Add an entry per distro actually in use.
 [os.symbols]
 Arch = ' '
 Macos = ' '
+Ubuntu = ' '
 Linux = ' '
 Windows = ' '
 
