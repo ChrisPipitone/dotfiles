@@ -77,10 +77,5 @@ add-zsh-hook preexec _transient_preexec
 
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/chris/.lmstudio/bin"
-# End of LM Studio CLI section
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Machine-local state (gitignored) — installer paths, work-only exports, secrets
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
