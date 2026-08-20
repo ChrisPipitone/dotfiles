@@ -53,8 +53,10 @@ bindkey -v
 bindkey "^?" backward-delete-char
 
 source ~/.zsh/aliases
-source ~/.zsh/functions
+# init before functions: zoxide defines `z` as an alias, and aliases expand at
+# parse time — zd()'s body would keep an unexpanded `z` if functions loaded first
 source ~/.zsh/init
+source ~/.zsh/functions
 
 # Regenerate starship.toml from the active theme (omarchy on Linux, ~/.config/theme.name on Mac)
 [[ -x "$HOME/.config/tmux/apply-theme.sh" ]] && "$HOME/.config/tmux/apply-theme.sh" &>/dev/null
