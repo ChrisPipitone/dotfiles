@@ -21,6 +21,7 @@ return {
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
+			"theHamsta/nvim-dap-virtual-text",
 		},
 
 		keys = {
@@ -80,6 +81,9 @@ return {
 			local dapui = require("dapui")
 
 			dapui.setup()
+			require("nvim-dap-virtual-text").setup({
+				commented = true,
+			})
 
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
