@@ -5,15 +5,46 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     "williamboman/mason-lspconfig.nvim",
+    "p00f/clangd_extensions.nvim",
   },
   config = function()
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local keymap = vim.keymap
 
+    require("clangd_extensions").setup({
+      ast = {
+        role_icons = {
+          type = "",
+          declaration = "",
+          expression = "",
+          specifier = "",
+          statement = "",
+          ["template argument"] = "",
+        },
+      },
+    })
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         local opts = { buffer = ev.buf, silent = true }
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+        if client and client.name == "clangd" then
+          opts.desc = "Toggle inlay hints"
+          keymap.set("n", "<leader>ch", function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }), { bufnr = ev.buf })
+          end, opts)
+
+          opts.desc = "AST viewer"
+          keymap.set("n", "<leader>cA", "<cmd>ClangdAST<CR>", opts)
+
+          opts.desc = "Memory layout"
+          keymap.set("n", "<leader>cM", "<cmd>ClangdMemoryUsage<CR>", opts)
+
+          opts.desc = "Type hierarchy"
+          keymap.set("n", "<leader>cT", "<cmd>ClangdTypeHierarchy<CR>", opts)
+        end
 
         opts.desc = "Show LSP references"
         keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
