@@ -7,3 +7,7 @@ export PATH="$HOME/.local/bin:$PATH"
 [[ "$(uname)" == "Darwin" ]] && PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 [[ "$(uname)" == "Darwin" ]] && PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH
+
+# Rootless Docker keeps its socket in the user runtime dir; the CLI defaults to
+# the system daemon's socket, which we no longer run.
+[[ "$(uname)" == "Linux" ]] && export DOCKER_HOST="unix://${XDG_RUNTIME_DIR:-/run/user/$UID}/docker.sock"
