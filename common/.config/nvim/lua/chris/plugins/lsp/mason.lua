@@ -27,7 +27,6 @@ return {
 				"pyright",
 				"ruff",
 				"clangd",
-				"codelldb",
 				"neocmake",
 				"dockerls",
 				"lua_ls",
