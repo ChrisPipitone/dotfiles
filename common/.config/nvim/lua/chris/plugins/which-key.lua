@@ -13,7 +13,7 @@ return {
       { "<leader>t", group = "tabs" },
       { "<leader>w", group = "session" },
       { "<leader>x", group = "trouble/todo" },
-      { "<leader>c", group = "clangd" },
+      { "<leader>c", group = "code" },
       { "<leader>C", group = "cmake" },
       { "<leader>G", group = "godbolt" },
       { "<leader>d", group = "debug" },
