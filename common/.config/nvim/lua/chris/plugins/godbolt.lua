@@ -1,5 +1,5 @@
 return {
-	"krady007/godbolt.nvim",
+	"p00f/godbolt.nvim",
 	ft = { "c", "cpp" },
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
