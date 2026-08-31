@@ -15,6 +15,7 @@ return {
       { "<leader>x", group = "trouble/todo" },
       { "<leader>c", group = "clangd" },
       { "<leader>C", group = "cmake" },
+      { "<leader>G", group = "godbolt" },
       { "<leader>d", group = "debug" },
     },
   },
