@@ -102,7 +102,15 @@ hl.unbind("SUPER + S")       -- was: Toggle scratchpad
 hl.unbind("SUPER + ALT + S") -- was: Move window to scratchpad
 
 o.bind("SUPER + G", "Toggle scratchpad", hl.dsp.workspace.toggle_special("scratchpad"))
-o.bind("SUPER + ALT + G", "Move window to scratchpad", hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
+-- A window rule can't catch a window that is moved into the scratchpad (rules
+-- run at open), so float, size and centre it here before sending it over.
+-- resize takes pixels only; 1536x864 is 60% of DP-1.
+o.bind("SUPER + ALT + G", "Move window to scratchpad", function()
+  hl.dispatch(hl.dsp.window.float({ action = "on" }))
+  hl.dispatch(hl.dsp.window.resize({ x = 1536, y = 864, relative = false }))
+  hl.dispatch(hl.dsp.window.center({}))
+  hl.dispatch(hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
+end)
 
 -- Remaining grouping bindings, unused without groups. SUPER + ALT + 1-5 was
 -- also grouping, but the workspace loop above already rebound those keys —
@@ -228,3 +236,11 @@ o.bind("SUPER + CTRL + ALT + SPACE", "Theme menu", "omarchy-menu toggle theme")
 
 hl.unbind("SUPER + CTRL + N") -- nightlight moves to the second tier
 o.bind("SUPER + ALT + N", "Toggle nightlight", "omarchy-toggle-nightlight")
+
+-- Workspaces 3/4/5 are retired: the set is 6-0 on DP-1 and 1-2 on the portrait
+-- panel, so the left-hand keys in the middle of the row go unused.
+for _, workspace in ipairs({ 3, 4, 5 }) do
+  local key = "code:" .. tostring(workspace + 9)
+  hl.unbind("SUPER + " .. key)
+  hl.unbind("SUPER + ALT + " .. key)
+end
