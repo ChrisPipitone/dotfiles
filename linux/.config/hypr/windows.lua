@@ -17,3 +17,7 @@ o.window("^org\\.omarchy\\.agent$", { workspace = "3" })
 
 -- Comms live on the portrait panel.
 o.window("^chrome-mail\\.proton\\.me__-Default$", { workspace = "2" })
+
+-- Omarchy tags every window "default-opacity" then applies 0.985/0.96 — a 2.5%
+-- split you cannot see. This file loads after that rule, so it wins.
+o.window({ tag = "default-opacity" }, { opacity = "1.0 0.90" })
