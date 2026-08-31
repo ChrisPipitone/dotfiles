@@ -1,3 +1,6 @@
+# Tmux project sessionizer
+t() { ~/.config/tmux/tmux-sessionizer.sh "$@"; }
+
 # Smart nvim opener
 n() { [[ $# -eq 0 ]] && nvim . || nvim "$@"; }
 
