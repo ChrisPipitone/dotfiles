@@ -92,3 +92,9 @@ set -g window-status-separator      "#[bg=${bg},fg=${subtle}]${SEP}"
 set -g window-status-current-style  ""
 set -g window-status-style          ""
 EOF
+
+# Repaint any running tmux server so a theme change lands without restarting it.
+# Harmless when tmux is absent or no server is up (mac, WSL, bare shell).
+if command -v tmux >/dev/null 2>&1 && tmux has-session 2>/dev/null; then
+  tmux source-file "$OUT" 2>/dev/null || true
+fi
