@@ -21,18 +21,17 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@179.98", position = "0x0", s
 --
 -- A rule applies when a workspace is created, so existing ones keep their
 -- current monitor until they are recreated or you log in again.
+-- The portrait panel keeps its three slots alive so it is always the same
+-- place, and stays on dwindle since everything there is a column anyway.
 for _, ws in ipairs({ "1", "2", "3" }) do
-  hl.workspace_rule({ workspace = ws, monitor = "HDMI-A-1" })
+  hl.workspace_rule({ workspace = ws, monitor = "HDMI-A-1", persistent = true, layout = "dwindle" })
 end
 
+-- DP-1 runs master: one main pane with the rest stacked beside it.
 for _, ws in ipairs({ "6", "7", "8", "9", "10" }) do
-  hl.workspace_rule({ workspace = ws, monitor = "DP-1" })
+  hl.workspace_rule({ workspace = ws, monitor = "DP-1", layout = "master" })
 end
 
--- The scratchpad stays a tiling workspace; it is just inset so it reads as a
--- panel over the current one. 384/216 leaves ~70% of DP-1. gaps_out needs a
--- scalar or a table keyed top/right/bottom/left — a positional table parses
--- but is silently ignored.
 hl.workspace_rule({
   workspace = "special:scratchpad",
   gaps_out = { top = 216, right = 384, bottom = 216, left = 384 },
