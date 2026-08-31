@@ -16,6 +16,9 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@179.98", position = "0x0", s
 -- is split by hand: 6-0 sit under the right hand on DP-1 (the primary set),
 -- 1-2 stay on the portrait panel. 3/4/5 are retired in bindings.lua.
 --
+-- 9 spawns the dev session on first visit so the workspace carries the intent
+-- rather than a startup script.
+--
 -- A rule applies when a workspace is created, so existing ones keep their
 -- current monitor until they are recreated or you log in again.
 for _, ws in ipairs({ "1", "2" }) do
@@ -33,4 +36,9 @@ end
 hl.workspace_rule({
   workspace = "special:scratchpad",
   gaps_out = { top = 216, right = 384, bottom = 216, left = 384 },
+})
+
+hl.workspace_rule({
+  workspace = "9",
+  on_created_empty = [[foot --app-id=tmux-work -e bash -c 'tmux attach || tmux new -s Work']],
 })

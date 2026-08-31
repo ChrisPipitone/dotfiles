@@ -191,7 +191,9 @@ o.bind("SUPER + ALT + C", "Universal copy", function()
   end
 end)
 
-o.bind("SUPER + ALT + RETURN", "Tmux", { omarchy = "terminal-tmux" })
+-- Its own app-id so the workspace rule can pin the dev session without
+-- dragging every other terminal to 9 with it.
+o.bind("SUPER + ALT + RETURN", "Tmux", [[uwsm-app -- foot --app-id=tmux-work -e bash -c 'tmux attach || tmux new -s Work']])
 o.bind("SUPER + CTRL + RETURN", "Herdr", { omarchy = "terminal-herdr" })
 o.bind("SUPER + ALT + M", "Music", { omarchy = "spotify" })
 o.bind("SUPER + ALT + S", "Signal", { omarchy = "signal" })
