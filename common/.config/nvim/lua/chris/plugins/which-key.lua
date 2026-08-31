@@ -13,6 +13,8 @@ return {
       { "<leader>t", group = "tabs" },
       { "<leader>w", group = "session" },
       { "<leader>x", group = "trouble/todo" },
+      { "<leader>c", group = "clangd" },
+      { "<leader>C", group = "cmake" },
       { "<leader>d", group = "debug" },
     },
   },
