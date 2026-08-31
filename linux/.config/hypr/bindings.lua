@@ -225,3 +225,6 @@ o.bind("SUPER + ALT + B", "Browser (private)", { omarchy = "browser --private" }
 
 hl.unbind("SUPER + SHIFT + CTRL + SPACE")
 o.bind("SUPER + CTRL + ALT + SPACE", "Theme menu", "omarchy-menu toggle theme")
+
+hl.unbind("SUPER + CTRL + N") -- nightlight moves to the second tier
+o.bind("SUPER + ALT + N", "Toggle nightlight", "omarchy-toggle-nightlight")
