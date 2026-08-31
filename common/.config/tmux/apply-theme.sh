@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Generates ~/.config/tmux/current-theme.conf from the active theme's colors.toml.
-# Linux: reads omarchy's current theme (~/.config/omarchy/current/theme.name)
+# Linux: reads omarchy's current theme (~/.local/state/omarchy/current/theme.name)
 # Mac:   reads ~/.config/theme.name (written by install.sh, editable by user)
 # Falls back to matte-black if no theme file or colors.toml is found.
 
@@ -13,11 +13,16 @@ theme=""
 colors=""
 
 if [[ "$(uname)" == "Linux" ]]; then
-  omarchy_theme="$HOME/.config/omarchy/current/theme.name"
-  [[ -f "$omarchy_theme" ]] && theme=$(tr -d '[:space:]' < "$omarchy_theme")
-  # Use the already-resolved current theme colors directly — no directory search needed.
-  omarchy_colors="$HOME/.config/omarchy/current/theme/colors.toml"
-  [[ -f "$omarchy_colors" ]] && colors="$omarchy_colors"
+  # Omarchy 4 moved theme state to ~/.local/state; 3.x kept it in ~/.config.
+  for omarchy_current in \
+    "$HOME/.local/state/omarchy/current" \
+    "$HOME/.config/omarchy/current"; do
+    [[ -z "$theme" && -f "$omarchy_current/theme.name" ]] &&
+      theme=$(tr -d '[:space:]' < "$omarchy_current/theme.name")
+    # Use the already-resolved current theme colors directly — no directory search needed.
+    [[ -z "$colors" && -f "$omarchy_current/theme/colors.toml" ]] &&
+      colors="$omarchy_current/theme/colors.toml"
+  done
 fi
 
 if [[ -z "$theme" ]]; then

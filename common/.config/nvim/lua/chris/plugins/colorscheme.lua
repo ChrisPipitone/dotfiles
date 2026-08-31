@@ -1,8 +1,24 @@
+-- Omarchy 4 moved theme state to ~/.local/state; 3.x kept it in ~/.config.
+local omarchy_current_dirs = {
+  "~/.local/state/omarchy/current",
+  "~/.config/omarchy/current",
+}
+
+-- Returns the first readable path built from the omarchy current-theme dirs.
+local function omarchy_theme_file(suffix)
+  for _, dir in ipairs(omarchy_current_dirs) do
+    local path = vim.fn.expand(dir .. "/" .. suffix)
+    if vim.fn.filereadable(path) == 1 then
+      return path
+    end
+  end
+end
+
 -- On Linux, load colorscheme directly from omarchy current theme's neovim.lua if present.
 -- This handles custom themes (brutalism, city-783, etc.) without needing an explicit map entry.
 if vim.fn.has("linux") == 1 then
-  local theme_lua = vim.fn.expand("~/.config/omarchy/current/theme/neovim.lua")
-  if vim.fn.filereadable(theme_lua) == 1 then
+  local theme_lua = omarchy_theme_file("theme/neovim.lua")
+  if theme_lua then
     local ok, specs = pcall(dofile, theme_lua)
     if ok and type(specs) == "table" then
       -- Omarchy themes use LazyVim/LazyVim to set the colorscheme; extract it instead of dropping it.
@@ -99,7 +115,8 @@ return {
 
       local theme_name
       if vim.fn.has("linux") == 1 then
-        theme_name = resolve("~/.config/omarchy/current/theme.name")
+        local name_file = omarchy_theme_file("theme.name")
+        theme_name = name_file and resolve(name_file)
       end
       theme_name = theme_name or resolve("~/.config/theme.name")
 
