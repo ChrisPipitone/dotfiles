@@ -149,7 +149,9 @@ hl.unbind("SUPER + M")                -- full screen moved to SUPER + ALT + F
 o.bind("SUPER + A", "Agent", "omarchy-agent --pick")
 o.bind("SUPER + D", "Docker", { tui = "omarchy-launch-docker-tui" })
 o.bind("SUPER + E", "Proton Mail", webapp("https://mail.proton.me", "chrome-mail.proton.me__-Default"))
-o.bind("SUPER + N", "Notion", webapp("https://www.notion.so", "chrome-www.notion.so__-Default"))
+-- www.notion.so is the marketing site even when signed in; app.notion.com is
+-- the workspace itself.
+o.bind("SUPER + N", "Notion", webapp("https://app.notion.com", "chrome-app.notion.com__-Default"))
 o.bind("SUPER + O", "Obsidian", { launch = "obsidian", focus = "^obsidian$" })
 o.bind("SUPER + Y", "YouTube", { webapp = "https://youtube.com/" })
 
