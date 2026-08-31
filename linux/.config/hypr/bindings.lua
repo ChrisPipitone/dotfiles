@@ -102,15 +102,7 @@ hl.unbind("SUPER + S")       -- was: Toggle scratchpad
 hl.unbind("SUPER + ALT + S") -- was: Move window to scratchpad
 
 o.bind("SUPER + G", "Toggle scratchpad", hl.dsp.workspace.toggle_special("scratchpad"))
--- A window rule can't catch a window that is moved into the scratchpad (rules
--- run at open), so float, size and centre it here before sending it over.
--- resize takes pixels only; 1536x864 is 60% of DP-1.
-o.bind("SUPER + ALT + G", "Move window to scratchpad", function()
-  hl.dispatch(hl.dsp.window.float({ action = "on" }))
-  hl.dispatch(hl.dsp.window.resize({ x = 1536, y = 864, relative = false }))
-  hl.dispatch(hl.dsp.window.center({}))
-  hl.dispatch(hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
-end)
+o.bind("SUPER + ALT + G", "Move window to scratchpad", hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
 
 -- Remaining grouping bindings, unused without groups. SUPER + ALT + 1-5 was
 -- also grouping, but the workspace loop above already rebound those keys —
@@ -150,10 +142,10 @@ hl.unbind("SUPER + SHIFT + RETURN")    -- duplicate of SUPER + B
 o.bind("SUPER + F", "File manager", { omarchy = "nautilus" })
 o.bind("SUPER + ALT + F", "Full screen", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 o.bind("SUPER + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cwd" })
-o.bind("SUPER + CTRL + ALT + F", "Full width", hl.dsp.window.fullscreen({ mode = "maximized" }))
+o.bind("SUPER + M", "Full width", hl.dsp.window.fullscreen({ mode = "maximized" }))
 
 hl.unbind("SUPER + SHIFT + CTRL + A") -- was: Agent
-hl.unbind("SUPER + M")                -- full screen moved to SUPER + ALT + F
+-- SUPER + M carries full width; full screen is SUPER + ALT + F.
 o.bind("SUPER + A", "Agent", "omarchy-agent --pick")
 o.bind("SUPER + D", "Docker", { tui = "omarchy-launch-docker-tui" })
 o.bind("SUPER + E", "Proton Mail", webapp("https://mail.proton.me", "chrome-mail.proton.me__-Default"))

@@ -25,3 +25,12 @@ end
 for _, ws in ipairs({ "6", "7", "8", "9", "10" }) do
   hl.workspace_rule({ workspace = ws, monitor = "DP-1" })
 end
+
+-- The scratchpad stays a tiling workspace; it is just inset so it reads as a
+-- panel over the current one. 384/216 leaves ~70% of DP-1. gaps_out needs a
+-- scalar or a table keyed top/right/bottom/left — a positional table parses
+-- but is silently ignored.
+hl.workspace_rule({
+  workspace = "special:scratchpad",
+  gaps_out = { top = 216, right = 384, bottom = 216, left = 384 },
+})
