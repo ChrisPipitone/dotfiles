@@ -10,5 +10,10 @@ o.window("^tmux-work$", { workspace = "9" })
 o.window("^chrome-app\\.notion\\.com__-Default$", { workspace = "8" })
 o.window("^obsidian$", { workspace = "8" })
 
+-- Agents: the Claude web UI and every terminal agent, which omarchy gives a
+-- fixed app-id for exactly this purpose.
+o.window("^chrome-claude\\.ai__-Default$", { workspace = "3" })
+o.window("^org\\.omarchy\\.agent$", { workspace = "3" })
+
 -- Comms live on the portrait panel.
 o.window("^chrome-mail\\.proton\\.me__-Default$", { workspace = "2" })

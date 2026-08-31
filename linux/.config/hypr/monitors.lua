@@ -21,7 +21,7 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@179.98", position = "0x0", s
 --
 -- A rule applies when a workspace is created, so existing ones keep their
 -- current monitor until they are recreated or you log in again.
-for _, ws in ipairs({ "1", "2" }) do
+for _, ws in ipairs({ "1", "2", "3" }) do
   hl.workspace_rule({ workspace = ws, monitor = "HDMI-A-1" })
 end
 

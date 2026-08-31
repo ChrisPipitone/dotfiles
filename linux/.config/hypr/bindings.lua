@@ -231,9 +231,9 @@ o.bind("SUPER + CTRL + ALT + SPACE", "Theme menu", "omarchy-menu toggle theme")
 hl.unbind("SUPER + CTRL + N") -- nightlight moves to the second tier
 o.bind("SUPER + ALT + N", "Toggle nightlight", "omarchy-toggle-nightlight")
 
--- Workspaces 3/4/5 are retired: the set is 6-0 on DP-1 and 1-2 on the portrait
+-- Workspaces 4/5 are retired: the set is 6-0 on DP-1 and 1-2 on the portrait
 -- panel, so the left-hand keys in the middle of the row go unused.
-for _, workspace in ipairs({ 3, 4, 5 }) do
+for _, workspace in ipairs({ 4, 5 }) do
   local key = "code:" .. tostring(workspace + 9)
   hl.unbind("SUPER + " .. key)
   hl.unbind("SUPER + ALT + " .. key)
