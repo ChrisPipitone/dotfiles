@@ -22,15 +22,30 @@ return {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
 			"theHamsta/nvim-dap-virtual-text",
+			"weissle/persistent-breakpoints.nvim",
 		},
 
 		keys = {
 			{
 				"<leader>db",
 				function()
-					require("dap").toggle_breakpoint()
+					require("persistent-breakpoints.api").toggle_breakpoint()
 				end,
 				desc = "Toggle breakpoint",
+			},
+			{
+				"<leader>dB",
+				function()
+					require("persistent-breakpoints.api").set_conditional_breakpoint()
+				end,
+				desc = "Conditional breakpoint",
+			},
+			{
+				"<leader>dx",
+				function()
+					require("persistent-breakpoints.api").clear_all_breakpoints()
+				end,
+				desc = "Clear all breakpoints",
 			},
 			{
 				"<leader>dc",
@@ -81,8 +96,9 @@ return {
 			local dapui = require("dapui")
 
 			dapui.setup()
-			require("nvim-dap-virtual-text").setup({
-				commented = true,
+			require("nvim-dap-virtual-text").setup({ commented = true })
+			require("persistent-breakpoints").setup({
+				load_breakpoints_event = { "BufReadPost" },
 			})
 
 			dap.listeners.after.event_initialized["dapui_config"] = function()
