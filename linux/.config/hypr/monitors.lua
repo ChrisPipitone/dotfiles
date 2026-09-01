@@ -21,16 +21,11 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@179.98", position = "0x0", s
 --
 -- A rule applies when a workspace is created, so existing ones keep their
 -- current monitor until they are recreated or you log in again.
--- The portrait panel stays on dwindle since everything there is a column.
--- 1 and 3 are kept alive so the monitor is always the same place; 2 is not,
--- because persistent and on_created_empty are mutually exclusive — a
--- persistent workspace is created once at startup and never again, so the
--- lazy launch would never fire.
-for _, ws in ipairs({ "1", "3" }) do
+-- The portrait panel keeps its three slots alive so it is always the same
+-- place, and stays on dwindle since everything there is a column anyway.
+for _, ws in ipairs({ "1", "2", "3" }) do
   hl.workspace_rule({ workspace = ws, monitor = "HDMI-A-1", persistent = true, layout = "dwindle" })
 end
-
-hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", layout = "dwindle" })
 
 -- DP-1 runs master: one main pane with the rest stacked beside it.
 for _, ws in ipairs({ "6", "7", "8", "9", "10" }) do
@@ -44,14 +39,11 @@ hl.workspace_rule({
 
 -- Workspaces that carry a single app launch it on first visit. Only fires when
 -- the workspace is empty, so arriving with something already there is a no-op.
+-- Not used on the portrait workspaces: they are persistent, and a persistent
+-- workspace is created once at startup, so the launch would never fire.
 hl.workspace_rule({
   workspace = "8",
   on_created_empty = "omarchy-launch-webapp https://app.notion.com",
-})
-
-hl.workspace_rule({
-  workspace = "2",
-  on_created_empty = "omarchy-launch-webapp https://mail.proton.me",
 })
 
 hl.workspace_rule({
