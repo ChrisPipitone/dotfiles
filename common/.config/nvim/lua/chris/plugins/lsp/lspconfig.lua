@@ -5,24 +5,10 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     "williamboman/mason-lspconfig.nvim",
-    "p00f/clangd_extensions.nvim",
   },
   config = function()
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local keymap = vim.keymap
-
-    require("clangd_extensions").setup({
-      ast = {
-        role_icons = {
-          type = "",
-          declaration = "",
-          expression = "",
-          specifier = "",
-          statement = "",
-          ["template argument"] = "",
-        },
-      },
-    })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -141,7 +127,6 @@ return {
         "--clang-tidy",
         "--header-insertion=iwyu",
         "--completion-style=detailed",
-        "--function-arg-placeholders",
         "--fallback-style=llvm",
       },
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
