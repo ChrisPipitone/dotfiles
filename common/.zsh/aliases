@@ -1,6 +1,10 @@
 # Editor
 alias vim='nvim'
 
+# zsh only alias-expands the first word of a command, so `sudo vim` looks for a
+# real vim binary and fails. A trailing space makes it expand the next word too.
+alias sudo='sudo '
+
 # File system
 if command -v lsd &>/dev/null; then
   alias ls='lsd'
