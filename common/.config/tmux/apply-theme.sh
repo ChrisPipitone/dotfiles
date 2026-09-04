@@ -44,12 +44,14 @@ fi
 
 if [[ -n "$colors" ]]; then
   get() { grep "^$1 " "$colors" | sed 's/.*= *"\([^"]*\)".*/\1/'; }
+  # Omarchy 4 renamed the palette keys; 3.x colors.toml still uses color1/2/8.
+  first() { for k in "$@"; do v=$(get "$k"); [[ -n "$v" ]] && { echo "$v"; return; }; done; }
   bg=$(get background)
   fg=$(get foreground)
   accent=$(get accent)
-  subtle=$(get color8)
-  error=$(get color1)
-  success=$(get color2)
+  subtle=$(first muted color8)
+  error=$(first red color1)
+  success=$(first green color2)
 else
   theme="matte-black"
   bg="#121212"
