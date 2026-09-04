@@ -27,10 +27,18 @@ for _, ws in ipairs({ "1", "2", "3" }) do
   hl.workspace_rule({ workspace = ws, monitor = "HDMI-A-1", persistent = true, layout = "dwindle" })
 end
 
+-- Without this, Hyprland hands each monitor the lowest workspace no other
+-- monitor has claimed. 1-3 are pinned to HDMI, so DP-1 fell through to 4 --
+-- a workspace with no rule, no binding, and no reason to exist. Naming the
+-- default for both monitors is what retires 4 for good.
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", default = true })
+
 -- DP-1 runs master: one main pane with the rest stacked beside it.
 for _, ws in ipairs({ "6", "7", "8", "9", "10" }) do
   hl.workspace_rule({ workspace = ws, monitor = "DP-1", layout = "master" })
 end
+
+hl.workspace_rule({ workspace = "10", monitor = "DP-1", default = true, persistent = true })
 
 hl.workspace_rule({
   workspace = "special:scratchpad",
