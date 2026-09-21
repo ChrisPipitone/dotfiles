@@ -16,6 +16,9 @@ brew "luajit"
 # Multiplexer
 brew "tmux"
 
+# C++ tooling
+brew "llvm"
+
 # Languages / DB
 brew "python@3.13"
 brew "postgresql@15"
