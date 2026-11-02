@@ -91,3 +91,9 @@ if [[ "$(uname)" == "Linux" ]]; then
     fi
   }
 fi
+
+
+# git hosting
+git-new-remote () {
+  ssh my-git "git-init-repo $1"
+}
