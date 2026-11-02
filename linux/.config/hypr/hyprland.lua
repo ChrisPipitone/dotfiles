@@ -35,3 +35,5 @@ require("default.hypr.toggles")
 -- launcher stops routing through pkexec to a root daemon that isn't running.
 hl.env("DOCKER_HOST", "unix:///run/user/1000/docker.sock")
 hl.env("OMARCHY_DOCKER_SOCKET", "/run/user/1000/docker.sock")
+
+hl.env("OMARCHY_SCREENSHOT_DIR", "/home/chris/Pictures/Screenshots")
