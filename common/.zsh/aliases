@@ -9,7 +9,7 @@ alias sudo='sudo '
 if command -v lsd &>/dev/null; then
   alias ls='lsd'
   alias la='lsd -la'
-  alias ll='lsd -lA'
+  alias ll='lsd -l'
   alias lt='lsd --tree'
   alias lsa='lsd -a'
   alias lta='lsd --tree -a'
