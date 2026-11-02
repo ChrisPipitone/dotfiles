@@ -127,7 +127,7 @@ local function webapp(url, class)
 end
 
 hl.unbind("SUPER + C") -- was: Universal copy, moved to SUPER + ALT + C
-o.bind("SUPER + C", "Claude", webapp("https://claude.ai", "chrome-claude.ai__-Default"))
+o.bind("SUPER + C", "Calendar", webapp("https://calendar.google.com", "chrome-calendar.google.com__-Default"))
 o.bind("SUPER + B", "Browser", { omarchy = "browser" })
 
 -- F carries the file manager and full screen; stock spells the cwd variant
