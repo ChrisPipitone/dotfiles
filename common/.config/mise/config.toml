@@ -1,6 +1,9 @@
 [tools]
 claude = "latest"
-codex = "latest"
 gh = "latest"
 java = "latest"
 node = "25"
+"npm:playwright" = "latest"
+
+[settings.upgrade]
+auto_prune = false
