@@ -32,6 +32,9 @@ opt.iskeyword:append("-")
 -- clipboard: sync with system clipboard; skip on SSH where it's unavailable
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 
+-- per-project config: run a trusted .nvim.lua from the starting directory
+opt.exrc = true
+
 -- session persistence
 opt.sessionoptions:append("localoptions")
 
